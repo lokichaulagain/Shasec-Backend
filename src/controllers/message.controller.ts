@@ -9,7 +9,7 @@ controller
 
   .post("/", async (req: Request, res: Response) => {
     const message = new MessageEntity();
-    message.content = req.body.content;
+    message.message = req.body.message;
     message.expirationDate = req.body.expirationDate || undefined;
     // Check if the password exists before hashing it
     if (req.body.password) {
@@ -19,7 +19,11 @@ controller
     }
 
     const newMessage = await useTypeORM(MessageEntity).save(message);
-    res.status(201).send(newMessage);
+    res.status(201).send({
+      success: true,
+      message: "Message Ccrested successfully",
+      id:newMessage.id
+    });
   })
 
   .get("/", async (req: Request, res: Response) => {
@@ -60,7 +64,12 @@ controller
     }
 
     // If password check passed, send the message data
-    res.send(existingMessage);
+  
+    res.status(200).send({
+      success: true,
+      message: "Message Ccrested successfully",
+      data:existingMessage
+    });
   })
 
   .patch("/:id", async (req: Request, res: Response) => {

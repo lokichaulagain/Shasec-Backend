@@ -8,7 +8,7 @@ export class MessageEntity implements IMessage {
   id!: string;
 
   @Column()
-  content!: string;
+  message!: string;
 
   @Column({ default: () => `CURRENT_TIMESTAMP + INTERVAL '3 days'` })
   expirationDate!: string;
