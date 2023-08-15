@@ -5,7 +5,7 @@ const routerSetup = (app: Express) =>
   app
 
     .get("/", async (req: Request, res: Response) => {
-      res.send("Hello Express APIvantage!");
+      res.send("Hello From SHASEC Server!");
     })
     .use("/api/messages", typeormProductsRouter);
 
