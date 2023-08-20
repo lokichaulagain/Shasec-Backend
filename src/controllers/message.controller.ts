@@ -38,7 +38,6 @@ controller
 
   .get("/:id/:password?", async (req: Request, res: Response) => {
     const { id, password } = req.params;
-    console.log(id, password);
 
     if (!id) {
       return res.status(400).send({ message: 'Required parameter "id" is missing!' });
